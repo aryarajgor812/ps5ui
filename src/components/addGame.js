@@ -54,8 +54,6 @@ const AddGame = ({ onAdd, onCancel }) => {
   );
 };
 
-import { motion } from "framer-motion";
-
 const Modal = styled(motion.div)`
   position: fixed;
   top: 0;

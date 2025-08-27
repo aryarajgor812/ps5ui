@@ -3,14 +3,29 @@ import overlay from "../assets/console_UI/overflow_button.png";
 import play_game from "../assets/console_UI/play_game.png";
 
 const Playable = (props) => {
+  const handleLaunchGame = () => {
+    const game = props.AppArray[props.currentApp];
+    if (game.isGame && game.path) {
+      console.log(`Launching game at path: ${game.path}`);
+      // This is a placeholder for the actual game launching logic.
+      // In a real application, this would use a custom protocol handler
+      // or a local server to launch the game.
+      // window.location.href = `game-launcher://${game.path}`;
+    }
+  };
+
+  const currentGame = props.AppArray[props.currentApp];
+
   return (
     <PlayableDiv>
-      <Logo src={props.AppArray[props.currentApp].gameLogo} />
-      <Subtext>{props.AppArray[props.currentApp].subText}</Subtext>
-      <Buttons>
-        <PlaygameButton src={play_game}></PlaygameButton>
-        <OverflowButton src={overlay}></OverflowButton>
-      </Buttons>
+      <Logo src={currentGame.gameLogo} />
+      <Subtext>{currentGame.subText}</Subtext>
+      {currentGame.isGame && (
+        <Buttons>
+          <PlaygameButton src={play_game} onClick={handleLaunchGame}></PlaygameButton>
+          <OverflowButton src={overlay}></OverflowButton>
+        </Buttons>
+      )}
     </PlayableDiv>
   );
 };

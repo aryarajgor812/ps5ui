@@ -1,4 +1,5 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
+import { motion } from "framer-motion";
 import overlay from "../assets/console_UI/overflow_button.png";
 import play_game from "../assets/console_UI/play_game.png";
 
@@ -17,7 +18,12 @@ const Playable = (props) => {
   const currentGame = props.AppArray[props.currentApp];
 
   return (
-    <PlayableDiv>
+    <PlayableDiv
+      key={props.currentApp}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <Logo src={currentGame.gameLogo} />
       <Subtext>{currentGame.subText}</Subtext>
       {currentGame.isGame && (
@@ -30,22 +36,11 @@ const Playable = (props) => {
   );
 };
 
-const FadeInAnimation = keyframes`
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
-`;
-
-const PlayableDiv = styled.div`
+const PlayableDiv = styled(motion.div)`
   display: flex;
   flex-direction: column;
   z-index: 0;
   width: 1700px;
-  animation-name: ${FadeInAnimation};
-  animation-duration: 0.5s;
   align-items: flex-start;
   justify-content: flex-end;
   height: 550px;

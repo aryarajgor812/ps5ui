@@ -241,7 +241,7 @@ const PlayStationUserInterface = () => {
           />
         )}
       </AnimatePresence>
-      <Background AppArray={appArray} currentApp={currentApp}></Background>
+      <Background />
       <Header src={Ps5Header} />
       <AppSelection>
         <motion.div
@@ -251,7 +251,7 @@ const PlayStationUserInterface = () => {
             scale: 1,
             rotate: 0,
           }}
-          transition={{ duration: 0.25, type: "tween" }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
         >
           <PlayStationApps items={appArray} />
         </motion.div>

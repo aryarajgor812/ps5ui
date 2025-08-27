@@ -1,7 +1,8 @@
 import styled, { keyframes } from "styled-components";
+import bg from "../assets/console_UI/bg.png";
 
-const Background = ({ AppArray, currentApp }) => {
-  return <BackgroundImage src={AppArray[currentApp].gameBG}></BackgroundImage>;
+const Background = () => {
+  return <BackgroundImage src={bg}></BackgroundImage>;
 };
 
 const FadeInAnimation = keyframes`

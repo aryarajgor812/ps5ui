@@ -14,9 +14,10 @@ const AddGame = ({ onAdd, onCancel }) => {
 
   return (
     <Modal
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      transition={{ duration: 0.2, ease: "easeOut" }}
     >
       <ModalContent>
         <h2>Add Game</h2>
